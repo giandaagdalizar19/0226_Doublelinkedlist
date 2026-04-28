@@ -1,4 +1,4 @@
-// 0226_Doublelinkedlist
+// 4NimBelakang_Doublelinkedlist
 #include <iostream>
 #include <string>
 using namespace std;
@@ -48,7 +48,8 @@ public:
             // Step 5: START.prev = newNode (if START exists)
             if (START != NULL)
                 START->prev = newNode;
-             // Step 6: newNode.prev = NULL
+
+            // Step 6: newNode.prev = NULL
             newNode->prev = NULL;
 
             // Step 7: START = newNode
@@ -81,7 +82,7 @@ public:
         current->next = newNode; // Step 9d: current.next = newNode
     }
 
-     void hapus()
+    void hapus()
     {
         if (START == NULL)
         {
@@ -95,5 +96,23 @@ public:
 
         Node *current = START;
 
+        // Step 1: Traverse the list to find the node
+        while (current != NULL && current->noMhs != rollNo)
+            current = current->next;
+
+        if (current == NULL)
+        {
+            cout << "Record not found" << endl;
+            return;
+        }
+
+        // Step 2: If node is at the beginning
+        if (current == START)
+        {
+            START = current->next; // Step 2a: START = START.next
+            if (START != NULL)
+                START->prev = NULL; // Step 2b: START.prev = NULL
+        }
+        
     }
 };
